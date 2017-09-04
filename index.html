@@ -18,7 +18,7 @@
 
               -->
             <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="Search" ng-model="searchText">
           </div>
           <div class="tableWrapper">
             <table class="table table-striped table-hover">
@@ -34,6 +34,28 @@
                       * include a way to remove individual listings
 
                 --> 
+
+
+                <tr ng-repeat="listing in listings | orderBy: 'code' | filter:searchText">
+                  <th>{{listing.code}}</th>
+                  <th>{{listing.name}}</th>
+                  <!-- Shows details of listings when clicked -->
+                  <th>
+                    <button ng-click = "showDetails(listings.indexOf(listing))">
+                    Show Details
+                    </button>
+                  </th>
+                  <th>
+                    <button ng-click="deleteListing(listings.indexOf(listing))">
+                      Delete Listing
+                    </button>
+                  </th>
+                </tr>
+
+
+
+
+
             </table>
           </div>
           <!-- 
@@ -41,6 +63,29 @@
               Write an HTML form that adds new listings to the directory 
 
             -->
+
+            <h3>Add New Listing</h3><br> 
+            <form>
+              Name:<br>
+              <input type="text" name="name" ng-model="name">
+              <br>
+              Code:<br>
+              <input type="text" name="code" ng-model="code">
+              <br>              
+              Longitude:<br>
+              <input type="text" name="longitude" ng-model="longitude">
+              <br>
+              Latitude:<br>
+              <input type="text" name="latitude" ng-model="latitude">
+              <br>
+              Address:<br>
+              <input type="text" name="address" ng-model="address">
+              <br><br>
+              <input type="submit" value="Submit" ng-click="addListing()">
+            </form> 
+
+
+
         </div>
         <div class="col-md-6">
           <div class="jumbotron">
@@ -51,6 +96,16 @@
                    * consider how to use ng-click within the the table to implement this feature
 
              -->
+
+
+             <p>Code: {{detailedInfo.code}}</p>
+             <p>Name: {{detailedInfo.name}}</p>
+             <p>Latitude: {{detailedInfo.coordinates.latitude}}</p>
+             <p>Longitude: {{detailedInfo.coordinates.longitude}}</p>
+             <p>Adddress: {{detailedInfo.address}}</p>
+
+
+
           </div>
         </div>
       </div>
