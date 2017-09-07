@@ -5,4 +5,29 @@
 .tableWrapper {
   max-height: 400px;
   overflow: auto;
+  /*background-color: rgb(147, 201, 181);*/
+}
+
+.jumbotron {
+  background-color: rgb(161, 196, 176) ;
+}
+
+body {
+  font-family: 'Libre Bakerville';
+  background: url("assets/background.jpg");
+  /*background-size: cover;*/
+  background-position: 50% 50%;
+  background-attachment: fixed;
+}
+
+h1, h2, h3 {
+  font-family: "Alfa Slab One";
+}
+ h1 {
+   color: rgb(31, 71, 64);
+   padding-left: 30px;
+ }
+
+.container {
+  background-color: white;
 }

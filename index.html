@@ -3,6 +3,10 @@
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
+    <!-- google font for header -->
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
+    <!-- google font for body -->
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville" rel="stylesheet">
   </head>
   <body ng-app="directoryApp">
     <div class="container">
@@ -12,9 +16,9 @@
       <div class="row" ng-controller="ListingsController">
         <div class="col-md-6">
           <div class="input-group" id="searchBar">
-            <!-- 
+            <!--
 
-                Implement a way to filter through listings using the search bar 
+                Implement a way to filter through listings using the search bar
 
               -->
             <span class="input-group-addon" id="sizing-addon1"><span class="glyphicon glyphicon-search"></span></span>
@@ -27,27 +31,22 @@
                 <th>Building Name</th>
                 <th></th>
               </tr>
-              <!-- 
+              <!--
 
                   Fill in the rest of the table:
                       * populate the rows with the code and name of each listing
                       * include a way to remove individual listings
 
-                --> 
+                -->
 
 
-                <tr ng-repeat="listing in listings | orderBy: 'code' | filter:searchText">
+                <tr ng-repeat="listing in listings | orderBy: 'code' | filter:searchText" ng-click = "showDetails(listings.indexOf(listing))">
                   <th>{{listing.code}}</th>
                   <th>{{listing.name}}</th>
                   <!-- Shows details of listings when clicked -->
                   <th>
-                    <button ng-click = "showDetails(listings.indexOf(listing))">
-                    Show Details
-                    </button>
-                  </th>
-                  <th>
                     <button ng-click="deleteListing(listings.indexOf(listing))">
-                      Delete Listing
+                      Delete
                     </button>
                   </th>
                 </tr>
@@ -58,31 +57,36 @@
 
             </table>
           </div>
-          <!-- 
+          <!--
 
-              Write an HTML form that adds new listings to the directory 
+              Write an HTML form that adds new listings to the directory
 
             -->
-
-            <h3>Add New Listing</h3><br> 
+            <br>
+            <h3>Add New Listing</h3><br>
             <form>
-              Name:<br>
+              <b>Name:</b>
+              <br>
               <input type="text" name="name" ng-model="name">
               <br>
-              Code:<br>
+              <b>Code:</b>
+              <br>
               <input type="text" name="code" ng-model="code">
-              <br>              
-              Longitude:<br>
+              <br>
+              <b>Longitude:</b>
+              <br>
               <input type="text" name="longitude" ng-model="longitude">
               <br>
-              Latitude:<br>
+              <b>Latitude:</b>
+              <br>
               <input type="text" name="latitude" ng-model="latitude">
               <br>
-              Address:<br>
+              <b>Address:</b>
+              <br>
               <input type="text" name="address" ng-model="address">
               <br><br>
               <input type="submit" value="Submit" ng-click="addListing()">
-            </form> 
+            </form>
 
 
 
@@ -90,7 +94,7 @@
         <div class="col-md-6">
           <div class="jumbotron">
             <h2>Detailed Information</h2>
-            <!-- 
+            <!--
 
               Include a way to display detailed information about an individual listing:
                    * consider how to use ng-click within the the table to implement this feature
